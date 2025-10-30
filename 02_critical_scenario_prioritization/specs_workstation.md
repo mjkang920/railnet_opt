@@ -1,3 +1,6 @@
+## Tested environment (02_critical_scenario_prioritization)
+
+```
 === OS ===
 platform: Linux-6.14.0-29-generic-x86_64-with-glibc2.39
 system: Linux
@@ -100,3 +103,5 @@ gurobipy: (12, 0, 2)
   "pandas": "not installed",
   "psutil": "7.0.0"
 }
+
+```
