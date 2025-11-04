@@ -4,7 +4,7 @@ input_files_kor = {
     "arc_distance": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\arc_distance.json",
     "intact_capacity": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\intact_capacity.json",
     "probs": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\probs.json",
-    "demand": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\demand_data.json",
+    "demand": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\demand_02.json",
 }
 
 input_files_uk = {
@@ -13,5 +13,5 @@ input_files_uk = {
     "arc_distance": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\arc_distance.json",
     "intact_capacity": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\intact_capacity.json",
     "probs": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\probs.json",
-    "demand": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\demand_data.json",
+    "demand": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\demand_02.json",
 }
