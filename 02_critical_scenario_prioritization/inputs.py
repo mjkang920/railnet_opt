@@ -1,3 +1,4 @@
+# network inputs
 input_files_kor = {
     "nodes": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\nodes.json",
     "edges": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\edges.json",
@@ -15,3 +16,25 @@ input_files_uk = {
     "probs": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\probs.json",
     "demand": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\demand_02.json",
 }
+
+
+# ga inputs
+from pathlib import Path
+
+ROOT = Path(r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\02_critical_scenario_prioritization\outputs")
+
+ga_files_kor = {
+    "delay30": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\02_critical_scenario_prioritization\outputs\kor\Genetic_Algorithm\GA_delay30_mcnf.json",
+    "delay60": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\02_critical_scenario_prioritization\outputs\kor\Genetic_Algorithm\GA_delay60_mcnf.json",
+    "delay120": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\02_critical_scenario_prioritization\outputs\kor\Genetic_Algorithm\GA_delay120_mcnf.json",
+}
+
+ga_files_uk = {
+    "delay30": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\02_critical_scenario_prioritization\outputs\uk\Genetic_Algorithm\GA_delay30_mcnf.json",
+    "delay60": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\02_critical_scenario_prioritization\outputs\uk\Genetic_Algorithm\GA_delay60_mcnf.json",
+    "delay120": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\02_critical_scenario_prioritization\outputs\uk\Genetic_Algorithm\GA_delay120_mcnf.json",
+}
+
+def get_ga_files(region: str = "kor", labels=("delay30", "delay60", "delay120")):
+    src = ga_files_kor if region.lower() == "kor" else ga_files_uk
+    return [(lab, Path(src[lab])) for lab in labels]
