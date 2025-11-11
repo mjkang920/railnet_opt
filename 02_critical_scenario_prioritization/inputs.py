@@ -38,3 +38,24 @@ ga_files_uk = {
 def get_ga_files(region: str = "kor", labels=("delay30", "delay60", "delay120")):
     src = ga_files_kor if region.lower() == "kor" else ga_files_uk
     return [(lab, Path(src[lab])) for lab in labels]
+
+
+# Basemap
+basemap_files_kor = {
+    "basemap_nodes": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\basemap_nodes.json",
+    "basemap_edges": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\basemap_edges.json",
+}
+
+basemap_files_uk = {
+    "basemap_nodes": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\basemap_nodes.json",
+    "basemap_edges": r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\basemap_edges.json",
+}
+
+def get_basemap_files(region: str = "kor"):
+    region = region.lower()
+    if region == "kor":
+        return basemap_files_kor
+    elif region == "uk":
+        return basemap_files_uk
+    else:
+        raise ValueError("region must be 'kor' or 'uk'")
