@@ -1,13 +1,22 @@
+from pathlib import Path
+
+HERE = Path(__file__).resolve()
+PROJECT_ROOT = HERE.parents[1]   
+
+DATA_DIR   = PROJECT_ROOT / "01_data"
+KOR_DATA   = DATA_DIR / "korea"
+UK_DATA    = DATA_DIR / "uk"
+
 input_files_kor = {
-    "edges":            r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\edges.json",
-    "route":            r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\routes_nodes.json",
-    "dept":             r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\dep_time.json",
-    "demand":           r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\korea\demand_03.json",
+    "edges":  KOR_DATA / "edges.json",
+    "route":  KOR_DATA / "routes_nodes.json",
+    "dept":   KOR_DATA / "dep_time.json",
+    "demand": KOR_DATA / "demand_03.json",
 }
 
 input_files_uk = {
-    "edges":            r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\edges.json",
-    "route":            r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\routes_nodes.json",
-    "dept":             r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\dep_time.json",
-    "demand":           r"C:\Users\Minji Kang\Documents\GitHub\railnet_opt\01_data\uk\demand_03.json",
+    "edges":  UK_DATA / "edges.json",
+    "route":  UK_DATA / "routes_nodes.json",
+    "dept":   UK_DATA / "dep_time.json",
+    "demand": UK_DATA / "demand_03.json",
 }
