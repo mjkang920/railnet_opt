@@ -1,0 +1,74 @@
+[
+  {
+    "origin": "1",
+    "destination": "2",
+    "distance": 50.0,
+    "journeys": 20.0,
+    "origin_name": "n1",
+    "destination_name": "n2"
+  },
+  {
+    "origin": "1",
+    "destination": "5",
+    "distance": 100.0,
+    "journeys": 20.0,
+    "origin_name": "n1",
+    "destination_name": "n5"
+  },
+  {
+    "origin": "2",
+    "destination": "5",
+    "distance": 50.0,
+    "journeys": 20.0,
+    "origin_name": "n2",
+    "destination_name": "n5"
+  },
+  {
+    "origin": "1",
+    "destination": "3",
+    "distance": 40.0,
+    "journeys": 30.0,
+    "origin_name": "n1",
+    "destination_name": "n3"
+  },
+  {
+    "origin": "1",
+    "destination": "5",
+    "distance": 80.0,
+    "journeys": 30.0,
+    "origin_name": "n1",
+    "destination_name": "n5"
+  },
+  {
+    "origin": "3",
+    "destination": "5",
+    "distance": 40.0,
+    "journeys": 30.0,
+    "origin_name": "n3",
+    "destination_name": "n5"
+  },
+  {
+    "origin": "1",
+    "destination": "4",
+    "distance": 50.0,
+    "journeys": 40.0,
+    "origin_name": "n1",
+    "destination_name": "n4"
+  },
+  {
+    "origin": "1",
+    "destination": "5",
+    "distance": 100.0,
+    "journeys": 40.0,
+    "origin_name": "n1",
+    "destination_name": "n5"
+  },
+  {
+    "origin": "4",
+    "destination": "5",
+    "distance": 50.0,
+    "journeys": 40.0,
+    "origin_name": "n4",
+    "destination_name": "n5"
+  }
+]

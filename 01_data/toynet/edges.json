@@ -1,0 +1,90 @@
+{
+  "e1": {
+    "from": "n1",
+    "to": "n2",
+    "tau": null,
+    "arc_distance": 50.0,
+    "intact_capacity": 80.0,
+    "probs": {
+      "0": 0.2,
+      "1": 0.8
+    }
+  },
+  "e2": {
+    "from": "n1",
+    "to": "n3",
+    "tau": null,
+    "arc_distance": 40.0,
+    "intact_capacity": 120.0,
+    "probs": {
+      "0": 0.15,
+      "1": 0.85
+    }
+  },
+  "e3": {
+    "from": "n1",
+    "to": "n4",
+    "tau": null,
+    "arc_distance": 50.0,
+    "intact_capacity": 160.0,
+    "probs": {
+      "0": 0.2,
+      "1": 0.8
+    }
+  },
+  "e4": {
+    "from": "n2",
+    "to": "n3",
+    "tau": null,
+    "arc_distance": 30.0,
+    "intact_capacity": 50.0,
+    "probs": {
+      "0": 0.1,
+      "1": 0.9
+    }
+  },
+  "e5": {
+    "from": "n3",
+    "to": "n4",
+    "tau": null,
+    "arc_distance": 30.0,
+    "intact_capacity": 50.0,
+    "probs": {
+      "0": 0.1,
+      "1": 0.9
+    }
+  },
+  "e6": {
+    "from": "n2",
+    "to": "n5",
+    "tau": null,
+    "arc_distance": 50.0,
+    "intact_capacity": 80.0,
+    "probs": {
+      "0": 0.2,
+      "1": 0.8
+    }
+  },
+  "e7": {
+    "from": "n3",
+    "to": "n5",
+    "tau": null,
+    "arc_distance": 40.0,
+    "intact_capacity": 120.0,
+    "probs": {
+      "0": 0.15,
+      "1": 0.85
+    }
+  },
+  "e8": {
+    "from": "n4",
+    "to": "n5",
+    "tau": null,
+    "arc_distance": 50.0,
+    "intact_capacity": 160.0,
+    "probs": {
+      "0": 0.2,
+      "1": 0.8
+    }
+  }
+}

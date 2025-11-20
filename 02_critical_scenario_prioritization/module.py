@@ -9,7 +9,9 @@ from scipy.stats import norm, qmc
 from deap import base as deap_base, creator as deap_creator, tools, algorithms
 from deap.tools.emo import sortNondominated, assignCrowdingDist
 from tqdm.auto import tqdm
+from gurobipy import Model, GRB, quicksum
 
+VERBOSE = True
 
 # System function
 def shortestpath_systemfunc(arcs, edges, arc_capacity, demand):
@@ -39,7 +41,7 @@ def shortestpath_systemfunc(arcs, edges, arc_capacity, demand):
     return expected_loss, total_demand_pd
 
 
-def MCNF_systemfunc(arcs, edges, arc_capacity, demand, max_distance, arc_distance, avg_velo: float = 149.0):
+def MCNF_systemfunc(arcs, edges, arc_capacity, demand, max_distance, arc_distance, avg_velo,):
     edge_map = {v: k for k, v in edges.items()}
 
     # Piecewise points (minutes)
