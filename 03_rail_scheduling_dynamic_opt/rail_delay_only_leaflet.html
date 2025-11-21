@@ -1,0 +1,65 @@
+
+<!doctype html><html><head>
+<meta charset="utf-8"><title>Total delay map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+html, body, #map { height:100%; margin:0; }
+.panel {
+  background:white; padding:8px; border-radius:6px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.3);
+  font-size:12px; line-height:1.35;
+}
+.legend-color {
+  display:inline-block; width:12px; height:12px; margin-right:6px;
+  vertical-align:middle; border:1px solid #333; border-radius:50%;
+}
+</style></head><body><div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+const summary = {"center": {"lat": 36.223654366826615, "lon": 127.88361434839712}, "bounds": [[34.45613451326267, 126.0900335805645], [37.99117422039056, 129.67719511622974]], "points": [{"lat": 37.52988179060358, "lon": 126.96451481522199, "train": "\uc911\uc559\uc1201_1", "node": "n3", "val": 2.0, "bin": "(1.0, 2.0]", "color": "rgba(182,0,185,1.0)", "size": 6.0}, {"lat": 37.52988179060358, "lon": 126.96451481522199, "train": "\uc911\uc559\uc1201_2", "node": "n3", "val": 2.0, "bin": "(1.0, 2.0]", "color": "rgba(182,0,185,1.0)", "size": 6.0}, {"lat": 37.52988179060358, "lon": 126.96451481522199, "train": "\uc911\uc559\uc1201_3", "node": "n3", "val": 2.0, "bin": "(1.0, 2.0]", "color": "rgba(182,0,185,1.0)", "size": 6.0}, {"lat": 37.52988179060358, "lon": 126.96451481522199, "train": "\uc911\uc559\uc1201_4", "node": "n3", "val": 2.0, "bin": "(1.0, 2.0]", "color": "rgba(182,0,185,1.0)", "size": 6.0}, {"lat": 37.52988179060358, "lon": 126.96451481522199, "train": "\uc911\uc559\uc1201_5", "node": "n3", "val": 2.0, "bin": "(1.0, 2.0]", "color": "rgba(182,0,185,1.0)", "size": 6.0}, {"lat": 37.52988179060358, "lon": 126.96451481522199, "train": "\uc911\uc559\uc1201_6", "node": "n3", "val": 2.0, "bin": "(1.0, 2.0]", "color": "rgba(182,0,185,1.0)", "size": 6.0}, {"lat": 35.115661262644, "lon": 129.0426737665395, "train": "\uc911\uc559\uc1202_1", "node": "n79", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(96,0,255,1.0)", "size": 24.0}, {"lat": 35.115661262644, "lon": 129.0426737665395, "train": "\uc911\uc559\uc1202_2", "node": "n79", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(96,0,255,1.0)", "size": 24.0}, {"lat": 35.115661262644, "lon": 129.0426737665395, "train": "\uc911\uc559\uc1202_3", "node": "n79", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(96,0,255,1.0)", "size": 24.0}, {"lat": 35.115661262644, "lon": 129.0426737665395, "train": "\uc911\uc559\uc1202_4", "node": "n79", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(96,0,255,1.0)", "size": 24.0}, {"lat": 35.115661262644, "lon": 129.0426737665395, "train": "\uc911\uc559\uc1202_5", "node": "n79", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(96,0,255,1.0)", "size": 24.0}, {"lat": 35.115661262644, "lon": 129.0426737665395, "train": "\uc911\uc559\uc1202_6", "node": "n79", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(96,0,255,1.0)", "size": 24.0}], "legend": [{"label": "(-0.001, 0.01]", "color": "rgba(255,0,0,1.0)"}, {"label": "(0.01, 1.0]", "color": "rgba(249,0,99,1.0)"}, {"label": "(1.0, 2.0]", "color": "rgba(182,0,185,1.0)"}, {"label": "(2.0, 3.0]", "color": "rgba(114,0,247,1.0)"}, {"label": "(3.0, 4.0]", "color": "rgba(96,0,255,1.0)"}, {"label": "(4.0, 6.0]", "color": "rgba(38,0,255,1.0)"}]};
+const map = L.map('map');
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom:18, attribution:'&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Fit initial view
+try {
+  const b = summary.bounds;
+  map.fitBounds([[b[0][0], b[0][1]], [b[1][0], b[1][1]]], {padding:[10,10]});
+} catch (e) {
+  map.setView([summary.center.lat, summary.center.lon], 8);
+}
+
+// Single layer for total delay
+const lg = L.layerGroup();
+summary.points.forEach(p => {
+  const c = L.circleMarker([p.lat, p.lon], {
+    radius: p.size,
+    color: '#000',
+    weight: 0.5,
+    fillColor: p.color,
+    fillOpacity: 0.5
+  });
+  c.bindPopup(`<div><b>Train</b>: ${p.train}<br/>
+    <b>Node</b>: ${p.node}<br/>
+    <b>Total delay</b>: ${p.val}</div>`);
+  c.addTo(lg);
+});
+lg.addTo(map);
+
+// Legend panel
+const ctl = L.control({position:'topright'});
+ctl.onAdd = function() {
+  const div = L.DomUtil.create('div','panel');
+  div.innerHTML = '<b>Total delay (bins)</b><br/>';
+  summary.legend.forEach(item => {
+    const row = document.createElement('div');
+    row.innerHTML = `<span class="legend-color" style="background:${item.color}"></span>${item.label}`;
+    div.appendChild(row);
+  });
+  L.DomEvent.disableClickPropagation(div);
+  return div;
+};
+ctl.addTo(map);
+</script></body></html>
