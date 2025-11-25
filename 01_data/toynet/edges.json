@@ -2,7 +2,7 @@
   "e1": {
     "from": "n1",
     "to": "n2",
-    "tau": null,
+    "tau": 2,
     "arc_distance": 50.0,
     "intact_capacity": 80.0,
     "probs": {
@@ -13,7 +13,7 @@
   "e2": {
     "from": "n1",
     "to": "n3",
-    "tau": null,
+    "tau": 1,
     "arc_distance": 40.0,
     "intact_capacity": 120.0,
     "probs": {
@@ -24,7 +24,7 @@
   "e3": {
     "from": "n1",
     "to": "n4",
-    "tau": null,
+    "tau": 2,
     "arc_distance": 50.0,
     "intact_capacity": 160.0,
     "probs": {
@@ -35,7 +35,7 @@
   "e4": {
     "from": "n2",
     "to": "n3",
-    "tau": null,
+    "tau": 1,
     "arc_distance": 30.0,
     "intact_capacity": 50.0,
     "probs": {
@@ -46,7 +46,7 @@
   "e5": {
     "from": "n3",
     "to": "n4",
-    "tau": null,
+    "tau": 1,
     "arc_distance": 30.0,
     "intact_capacity": 50.0,
     "probs": {
@@ -57,7 +57,7 @@
   "e6": {
     "from": "n2",
     "to": "n5",
-    "tau": null,
+    "tau": 2,
     "arc_distance": 50.0,
     "intact_capacity": 80.0,
     "probs": {
@@ -68,7 +68,7 @@
   "e7": {
     "from": "n3",
     "to": "n5",
-    "tau": null,
+    "tau": 1,
     "arc_distance": 40.0,
     "intact_capacity": 120.0,
     "probs": {
@@ -79,7 +79,7 @@
   "e8": {
     "from": "n4",
     "to": "n5",
-    "tau": null,
+    "tau": 2,
     "arc_distance": 50.0,
     "intact_capacity": 160.0,
     "probs": {
