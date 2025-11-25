@@ -465,7 +465,8 @@ def build_model_window(window_ctx, t_start, t_end,
     return m, x, t_arr, delta, h, z, s
 
 
-def node_cap(n): return CAPACITY_NODE[n] if isinstance(CAPACITY_NODE, dict) else CAPACITY_NODE
+def node_cap(n): 
+    return CAPACITY_NODE[n] if isinstance(CAPACITY_NODE, dict) else CAPACITY_NODE
 
 
 def merge_orders(base_order, new_order):
