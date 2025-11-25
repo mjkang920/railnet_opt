@@ -17,7 +17,7 @@ html, body, #map { height:100%; margin:0; }
 </style></head><body><div id="map"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
-const summary = {"center": {"lat": 30.0, "lon": 60.0}, "bounds": [[-6.0, 34.0], [66.0, 86.0]], "points": [{"lat": 30.0, "lon": 40.0, "train": "T2", "node": "n3", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(114,0,247,1.0)", "size": 15.0}, {"lat": 60.0, "lon": 80.0, "train": "T2", "node": "n5", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(114,0,247,1.0)", "size": 15.0}], "legend": [{"label": "(-0.001, 0.01]", "color": "rgba(255,0,0,1.0)"}, {"label": "(0.01, 1.0]", "color": "rgba(249,0,99,1.0)"}, {"label": "(1.0, 3.0]", "color": "rgba(182,0,185,1.0)"}, {"label": "(3.0, 4.0]", "color": "rgba(114,0,247,1.0)"}, {"label": "(4.0, 6.0]", "color": "rgba(96,0,255,1.0)"}]};
+const summary = {"center": {"lat": 60.0, "lon": 60.0}, "bounds": [[56.0, 36.0], [64.0, 84.0]], "points": [{"lat": 60.0, "lon": 80.0, "train": "T1", "node": "n5", "val": 1.0, "bin": "(0.01, 1.0]", "color": "rgba(249,0,99,1.0)", "size": 6.0}, {"lat": 60.0, "lon": 80.0, "train": "T2", "node": "n5", "val": 4.0, "bin": "(3.0, 4.0]", "color": "rgba(114,0,247,1.0)", "size": 24.0}], "legend": [{"label": "(-0.001, 0.01]", "color": "rgba(255,0,0,1.0)"}, {"label": "(0.01, 1.0]", "color": "rgba(249,0,99,1.0)"}, {"label": "(1.0, 3.0]", "color": "rgba(182,0,185,1.0)"}, {"label": "(3.0, 4.0]", "color": "rgba(114,0,247,1.0)"}, {"label": "(4.0, 6.0]", "color": "rgba(96,0,255,1.0)"}]};
 const map = L.map('map');
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom:18, attribution:'&copy; OpenStreetMap contributors'

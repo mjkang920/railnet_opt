@@ -14,6 +14,7 @@ T_clear     = None
 DWELL_MIN   = None
 BIG_M       = None
 CAPACITY_NODE = None
+MAX_WAIT    = None
 SINK        = "SINK"
 
 trains        = []

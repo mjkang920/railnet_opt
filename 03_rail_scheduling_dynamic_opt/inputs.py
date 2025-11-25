@@ -14,7 +14,7 @@ input_files_toynet = {
     "dept":   TOYNET_DATA / "dep_time.json",
     "demand": TOYNET_DATA / "demand_03.json",
     "nodes":  TOYNET_DATA / "nodes.json",
-    "cap_node": TOYNET_DATA / "CAPACITY_NODE.json",
+    "cap_node": TOYNET_DATA / "nodes_capacity.json",
 }
 
 input_files_kor = {
@@ -23,7 +23,7 @@ input_files_kor = {
     "dept":   KOR_DATA / "dep_time.json",
     "demand": KOR_DATA / "demand_03.json",
     "nodes":  KOR_DATA / "nodes.json",
-    "cap_node": KOR_DATA / "CAPACITY_NODE.json",
+    "cap_node": KOR_DATA / "nodes_capacity.json",
 }
 
 input_files_uk = {
@@ -32,7 +32,7 @@ input_files_uk = {
     "dept":   UK_DATA / "dep_time.json",
     "demand": UK_DATA / "demand_03.json",
     "nodes":  UK_DATA / "nodes.json",
-    "cap_node": UK_DATA / "CAPACITY_NODE.json",
+    "cap_node": UK_DATA / "nodes_capacity.json",
 }
 
 VALID_DAYS = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
@@ -43,7 +43,7 @@ input_files_uk_real = {
     "route_dir":  UK_DATA / "routes_nodes",
     "dept_dir":   UK_DATA / "dep_time",
     "demand_dir": UK_DATA / "demand_03",
-    "cap_node_dir": UK_DATA / "CAPACITY_NODE",
+    "cap_node_dir": UK_DATA / "nodes_capacity",
 }
 
 
@@ -80,6 +80,7 @@ def get_input_files(region: str, day: str | None = None) -> dict:
             "route":  input_files_uk_real["route_dir"]  / f"{day_code}.json",
             "dept":   input_files_uk_real["dept_dir"]   / f"{day_code}.json",
             "demand": input_files_uk_real["demand_dir"] / f"{day_code}.json",
+            "cap_node": input_files_uk_real["cap_node_dir"] / f"{day_code}.json",
         }
 
     raise ValueError(
