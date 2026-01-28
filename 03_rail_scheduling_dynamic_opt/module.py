@@ -621,6 +621,33 @@ def plot_train_paths(train_list, ax, title, h_get,
 def h_get(tr): return float(h_final.get(tr, 1.0))
 
 
+# Optional line name mapping (e.g., Korean -> English)
+LINE_NAME_MAP = {
+    "KTX강릉선": "KTX Gangneung Line",
+    "경부고속철도": "Gyeongbu High-speed Railway",
+    "경부선": "Gyeongbu Line",
+    "경북선": "Gyeongbuk Line",
+    "경전선": "Gyeongjeon Line",
+    "동해선": "Donghae Line",
+    "영동선": "Yeongdong Line",
+    "장항선": "Janghang Line",
+    "전라선": "Jeolla Line",
+    "중앙선": "Jungang Line",
+    "충북선": "Chungbuk Line",
+    "호남고속철도": "Honam High-speed Railway",
+    "호남선": "Honam Line",
+}
+
+
+def line_label(line):
+    region = str(globals().get("REGION", "")).lower()
+    if region in ("kor", "korea", "kr"):
+        return LINE_NAME_MAP.get(line, line)
+    if LINE_NAME_MAP.get(line) and re.search(r"[\uac00-\ud7a3]", str(line)):
+        return LINE_NAME_MAP.get(line, line)
+    return line
+
+
 # Example 1: all lines in one axis, global y-order
 def plot_all_lines_global(xmax=72, figsize=(30, 8)):
     lines_sorted = sorted(by_line.keys())
@@ -634,7 +661,7 @@ def plot_all_lines_global(xmax=72, figsize=(30, 8)):
             trs, ax, title=None,
             h_get=h_get, routes_nodes=routes_nodes, sched=sched,
             station_map=station_map_global, xmax=xmax,
-            color=color, label=line,
+            color=color, label=line_label(line),
             failed_edges=failed_edges, edges=edges,
             incident_x0=FAIL_T, incident_x1=T_clear,
             show_incident_line=(i == 0), show_incident_legend=False
@@ -684,7 +711,7 @@ def plot_selected_lines(selected_lines, xmax=100, figsize=(24, 8), use_global_or
             trs, ax, title=None,
             h_get=h_get, routes_nodes=routes_nodes, sched=sched,
             station_map=station_map, xmax=xmax,
-            color=color, label=line,
+            color=color, label=line_label(line),
             failed_edges=failed_edges, edges=edges,
             incident_x0=FAIL_T, incident_x1=T_clear,
             show_incident_line=(show_incident_line and i == 0),
@@ -726,7 +753,7 @@ def plot_lines_dynamic_y(xmax=72):
         station_map_line = {name: i+1 for i, name in enumerate(yorder)}
 
         plot_train_paths(
-            trs, ax, title=line,
+            trs, ax, title=line_label(line),
             h_get=h_get, routes_nodes=routes_nodes, sched=sched,
             station_map=station_map_line, xmax=xmax,
             failed_edges=failed_edges, edges=edges,
