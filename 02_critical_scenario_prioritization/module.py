@@ -201,8 +201,8 @@ def evaluate_individual(ind_bits, delay_time, sys_name, ctx):
     if sys_name == "mcnf":
         if mcnf_func is None:
             raise ValueError("MCNF_systemfunc is not provided in ctx")
-        eloss, total_dem = mcnf_func(arcs, edges, arc_cap, demand_dict,
-                                     max_dist_case, arc_distance)
+        eloss, total_dem = mcnf_func(arcs, edges, arc_cap, demand_dict, max_dist_case, arc_distance, avg_velo)
+                            
     elif sys_name == "shortest":
         eloss, total_dem = shortestpath_systemfunc(
             arcs, edges, arc_cap, demand_dict
