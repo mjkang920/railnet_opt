@@ -1,4 +1,4 @@
-# railnet_opt — Railway Resilience Optimization
+# Resilience Assessment and Decision Support for Complex Rail Networks
 
 An optimization framework for enhancing railway resilience through **critical scenario analysis** and **dynamic train rescheduling**.
 
@@ -18,7 +18,7 @@ Both stages measure passenger impact in the same way: **passenger demand × trav
 
 The framework is applied to three networks:
 
-- **toynet**: a 5-node toy network for learning and testing
+- **toynet**: a 5-node toy network for testing
 - **Korea**: the Korean intercity rail network (79 stations, 192 directed links, 105 train services)
 - **UK**: the Great Britain rail network (61 stations, 214 directed links), including a **real-timetable variant** (`uk_real`) with separate data for each day of the week
 
@@ -33,45 +33,12 @@ The framework is applied to three networks:
 
 1. **Stress-testing rail networks**: find the "weakest links" of a network before they fail, and rank them by likelihood and consequence together.
 2. **Comparing system models**: see how a simple connectivity check (shortest path) and a capacity-aware model (MCNF) disagree about which scenarios are critical.
-3. **Disruption management**: test operating strategies such as holding, rerouting, short-turning and cancellation on real timetables.
+3. **Disruption management**: test operating strategies such as rerouting, short-turning and cancellation on real timetables.
 4. **Beyond**: other networks (metro, freight, road) can be plugged in by preparing the same JSON inputs. New ideas and extensions are warmly welcome.
 
-## Research project and contact
+## Research project
 
 This repository was developed as part of the master's research of **Minji Kang** at Seoul National University. The research was supervised by [Prof. Junho Song](https://systemreliability.wordpress.com/junhosong/) (Seoul National University) and co-supervised by [Dr Ji-Eun Byun](https://profiles.imperial.ac.uk/j.byun) (Imperial College London).
-If you have any questions, please open an issue or contact [kangmj0920@gmail.com](mailto:kangmj0920@gmail.com).
-
----
-
-## Repository structure
-
-```
-railnet_opt/
-├── 01_data/                               # Input data for all networks (JSON)
-│   ├── toynet/                            # 5-node toy network
-│   ├── korea/                             # Korean rail network
-│   └── uk/                                # GB rail network
-│       ├── routes_nodes/  MON.json … SUN.json   # uk_real: per-day timetables
-│       ├── dep_time/      MON.json … SUN.json
-│       ├── demand_03/     MON.json … SUN.json
-│       └── nodes_capacity/MON.json … SUN.json
-│
-├── 02_critical_scenario_prioritization/   # Stage 1: which failures are critical?
-│   ├── inputs.py                          # File paths for each region
-│   ├── module.py                          # System functions, GA, plotting utilities
-│   ├── main.ipynb                         # Run the GA and plot Pareto fronts
-│   ├── visualization.ipynb                # Extract critical scenarios and map unmet demand
-│   └── outputs/{kor,uk}/                  # Saved GA results (.json) and figures (.png)
-│
-├── 03_rail_scheduling_dynamic_opt/        # Stage 2: how to reschedule trains?
-│   ├── inputs.py                          # File paths (+ get_input_files(region, day))
-│   ├── module.py                          # Time-expanded network, MIP model, timetable plots
-│   ├── main.ipynb                         # Build and solve the rescheduling model
-│   └── visualization.ipynb                # Demand flow maps
-│
-└── tests/
-    └── test_02_module.py                  # Unit tests for the Stage 1 system functions
-```
 
 ---
 
@@ -215,9 +182,7 @@ Results are saved in `outputs/<region>/Genetic_Algorithm/`:
 ### Inspecting critical scenarios: `visualization.ipynb`
 
 1. **Critical scenarios in the failure zone**: for each allowable delay and each `S_L`, lists the Pareto scenarios below the threshold together with their failed components.
-2. **Scenario simulation**: re-solves the MCNF for a chosen failure set and maps the **unmet demand at each station** as a bubble chart (see `outputs/<region>/Unmet_demand_distn/`).
-
-> ⚠️ This notebook sets `REPO_ROOT` to a local Windows path. Change it to the path of your own clone before running.
+2. **Scenario simulation**: re-solves the MCNF for a chosen failure set and maps the **unmet demand at each station** as a bubble chart.
 
 ---
 
@@ -233,7 +198,7 @@ Stage 1 tells us *which* disruptions are critical. Stage 2 asks *what to do* whe
 - **Wait arcs**: stay at a station (hold the train, up to `max_wait` steps).
 - **Dummy arcs**: terminate the train early (short-turn) at an allowed station.
 
-The failed edges are **blocked** from the incident time `FAIL_T` until the line is cleared at `T_clear`. A train already on a failed section at `FAIL_T` keeps occupying its capacity ("ghost occupancy").
+The failed edges are **blocked** from the incident time `FAIL_T` until the line is cleared at `T_clear`. A train already on a failed section at `FAIL_T` keeps occupying its capacity.
 
 ### Decisions and objective
 
@@ -309,15 +274,3 @@ pytest tests/test_02_module.py      # run one file
 ```
 
 VS Code users: the workspace is already set up for pytest (`.vscode/settings.json`). Open the **Testing** panel (beaker icon) to run the tests from the sidebar.
-
-## Citation
-
-If you use this code in your research, please cite:
-
-```
-<!-- TODO: add the paper citation once published -->
-```
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
